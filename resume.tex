@@ -1,87 +1,230 @@
-% LaTeX file for Daniel Limanowski's resume.
-% This file relies on resume document class (res.cls).
+%%%%%%%%%%%%%%%%%
+% Created using altacv.cls (v1.3, 10 May 2020) written by
+% LianTze Lim (liantze@gmail.com)
+%%%%%%%%%%%%%%%%
 
-\documentclass[line]{res} 
-\raggedbottom
-\usepackage[
-top    = 2cm,
-bottom = 2cm,
-left   = 2cm,
-right  = 5cm]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage{enumitem}
-\usepackage{hyperref} 
-\setlist{nolistsep, noitemsep, leftmargin=10pt}
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
+
+\documentclass[10pt,usletter,ragged2e,withhyper]{altacv}
+
+%% AltaCV uses the fontawesome5 and academicon fonts
+%% and packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+
+% Change the page layout if you need to
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% Font
+\usepackage[sfdefault]{roboto}
+
+% Change the colours if you want to
+\definecolor{VividPurple}{HTML}{8a0000}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+% \colorlet{name}{black}
+\colorlet{tagline}{VividPurple}
+\colorlet{heading}{VividPurple}
+\colorlet{headingrule}{VividPurple}
+% \colorlet{subheading}{PastelRed}
+\colorlet{accent}{VividPurple}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+% \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% \renewcommand{\personalinfofont}{\footnotesize}
+% \renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+% \renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
 
 \begin{document}
-\name{DANIEL LIMANOWSKI}
-\address{linkedin.com/in/daniellimanowski/ | b1tst0rm.net}
+\name{Daniel Limanowski}
+\tagline{Software, network, and cyber security engineer}
 
-\begin{resume}
-\section{CAREER SUMMARY}
-Computer engineer concentrating heavily in offensive security. I enjoy the entire software product development pipeline, including taking the code to market for sales.
+%% Can add multiple photos on the left or right
+\photoR{2.5cm}{daniel}
+\personalinfo{%
+% Add custom with \printinfo{symbol}{detail}
+%  \email{good@try.com}
+  \phone{612-293-5363‬}
+  \homepage{b1tst0rm.net}
+  \linkedin{daniellimanowski}
+  \github{b1tst0rm}
+  \location{Minneapolis, MN (open to relocate out of the Midwest)}
+}
 
-\section{WORK EXPERIENCE}
-\textbf{PwC} | Offensive Cyber Operator and Penetration Tester \hfill \textit{August 2019 - Present}
-\begin{itemize}
-	\item Execute red team, purple team, and penetration testing engagements
-	\item Develop proprietary C2 infrastructure to bypass widely used industry security controls
-\end{itemize}
-\textbf{Iowa State IT Security} | Security Analyst (part time) \hfill \textit{August 2018 - August 2019}
-\begin{itemize}
-	\item Respond to Security Onion network security alerts
-	\item Detect and mitigate malicious phishing attacks
-\end{itemize}
-\textbf{PwC} | Incident and Threat Management Intern (Core Pentest Team) \hfill \textit{June 2018 - July 2018}
-\begin{itemize}
-	\item Executed external/internal penetration tests for clients including proposal writing, footprinting, attacking, and reporting
-	\item Expedited various pentest tasks via scripting, user interfaces, and containerization w/ Docker
-\end{itemize}
+\makecvheader
 
-\textbf{ISEAGE Research Lab} | Staff Member \hfill \textit{September 2016 - May 2019}
-\begin{itemize}
-	\item Directed multiple Cyber Defense Competitions (CDCs) for high school and college students
-	\item Led a multi-week penetration test engagement for a local school district
-	\item Developed secure (also intentionally vulnerable) web and desktop applications
-	\item Created attack lab for a graduate-level information assurance class
-\end{itemize}
+%% Make fonts of itemize environments slightly smaller
+\AtBeginEnvironment{itemize}{\small}
 
-\textbf{ProCircular} | Security Engineer Intern \hfill \textit{May 2017 - February 2018}
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.6}
+
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+\begin{paracol}{2}
+
+\cvsection{Experience}
+
+\cvevent{Offensive Cyber Operator \& Penetration Tester}{PwC}{August 2019 -- Ongoing}{Minneapolis, MN}
 \begin{itemize}
-	\item Automated vulnerability assessment and penetration test reporting using Dradis Pro and Word VBA Macros
-	\item Assembled and ran an external CTF event for SecDSM meetup in Des Moines, IA
+\item Execute red/purple team, application security, and network penetration testing engagements
+\item Develop proprietary C2 infrastructure to bypass widely used industry security controls
+\item Assist in recruiting by hosting Capture the Flag (CTF) events for local universities and the Women in Cybersecurity initiative
 \end{itemize}
 
-\textbf{Caterpillar, Inc.} | Cyber Intern (Governance, Risk, Compliance)\hfill \textit{May 2016 - August 2016}
+\divider
+
+\cvevent{Security Analyst}{Iowa State IT Security}{August 2018 -- August 2019}{Ames, IA}
 \begin{itemize}
-	\item Played a key role in creation of new cyber policy and documentation by performing universal changes and communicating with team members throughout enterprise security
+\item Installed, maintained, and reviewed a multi-node Security Onion instance monitoring the campus
+\item Detected on, investigated, and mitigated cyber attacks (phishing, ransomware/malware)
 \end{itemize}
 
-\section{EDUCATION}
-\textbf{Iowa State University} (Ames, IA)\hfill \textit{GPA: \textbf{3.71/4.00}}
+\divider
+
+\cvevent{Penetration Testing Intern}{PwC}{June 2018 - July 2018}{Minneapolis, MN}
 \begin{itemize}
-    \item Bachelor of Science Degree in \textbf{Computer Engineering}
+\item Executed external/internal penetration tests for clients including proposal writing, footprinting, attacking, and reporting
+\item Expedited and automated tedious project tasks via scripting, user interfaces, and containerization with Docker
 \end{itemize}
-\textbf{Offensive Security Certified Expert (OSCE)}\hfill \textit{Spring 2020}\\
-\textbf{Offensive Security Certified Professional (OSCP)}\hfill \textit{Fall 2019}
+
+\divider
+
+\cvevent{Staff Member \& Information Warfare Lab Administrator}{ISEAGE Research Lab}{September 2016 -- May 2019}{Ames, IA}
+\begin{itemize}
+\item Directed multiple Cyber Defense Competitions (CDCs) for high school and college students
+\item Led a multi-week penetration test engagement for a local school district
+\item Developed secure (also intentionally vulnerable) web and desktop applications
+\item Created attack lab for a graduate-level information assurance class
+\end{itemize}
+
+\divider
+
+\cvevent{Security Engineer Intern}{ProCircular}{May 2017 - February 2018}{Iowa City, IA}
+\begin{itemize}
+\item Automated application vulnerability assessment and penetration test reporting using Dradis Pro and Word VBA Macros
+\item Assembled and ran an external Capture the Flag (CTF) event for over 100 security professionals at a meetup in Des Moines, IA
+\end{itemize}
+
+\divider
+
+\cvevent{Governance, Risk, and Compliance Intern}{Caterpillar, Inc.}{May 2016 -- August 2016}{Peoria, IL}
+\begin{itemize}
+\item Played a key role in creation of new cybersecurity policy by executing a benchmark survey with similar companies and communicating with team members throughout enterprise security to make documentation updates
+\end{itemize}
+
+\cvsection{Application development and security skills}
+
+% Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+% \wheelchart{outer radius}{inner radius}{
+% comma-separated list of value/text width/color/detail}
+% Some ad-hoc tweaking to adjust the labels so that they don't overlap
+\hspace*{-1em}  %% quick hack to move the wheelchart a bit left
+\wheelchart{1.5cm}{0.5cm}{%
+  10/13em/accent!30/Continuous integration \& deployment (CI-CD),
+  25/9em/accent!60/\footnotesize Manual API testing via proxy traffic interception with Burp Pro and Postman,
+  5/11em/accent!10/\footnotesize\\[1ex]Automated security assessment scanners such as Nessus Pro \& Nexpose,
+  20/11em/accent!40/\footnotesize Proficient in web and desktop languages,
+  5/8em/accent!20/\footnotesize Secure development lifecycle (SDL),
+  30/9em/accent/Reverse engineering binaries to discover logic flaws and exploitable bugs
+}
+
+%% Switch to the right column. This will now automatically move to the second
+%% page if the content is too long.
+\switchcolumn
+
+\cvsection{Career summary}
+\begin{quote}
+Hands-on engineer concentrating heavily in offensive security. I enjoy being invested in the entire software product development pipeline, from writing code to making sales. I have the capability to disseminate business critical information to a non-technical audience regarding technical subjects. 
+\end{quote}
 
 
-\section{ACTIVITIES}
-\textbf{BSIDES Iowa} | Speaker, vehicle (CAN) hacking\hfill \textit{Spring 2019}\\
-\textbf{Dept. of Energy Cyber Defense Competition} | 3rd place nationally \hfill \textit{Spring 2018}\\
-\textbf{National Cyber Analyst Challenge} | Finalist \hfill \textit{Spring 2018}\\
-\textbf{US Cyber Challenge} | 1st Place, CTF winner \hfill \textit{Summer 2018}\\
-\textbf{Information Assurance Student Group} | President and cabinet\hfill \textit{2016 - 2019}\\
-\textbf{ISEAGE Cyber Defense Competition (CDC)} | Team captain\hfill \textit{2015 - 2017}
+\cvsection{Education}
+
+\cvevent{Bachelor of Science degree (B.S.)\ in Computer Engineering \textbf{(3.71/4.00)}}{Iowa State University (Ames, IA)}{August 2015 -- May 2019}{}
+
+\divider
+
+\cvevent{Offensive Security Certified Professional (OSCP)}{Offensive Security, 24 hour technical exam}{Fall 2019}{}
+\cvevent{Offensive Security Certified Expert (OSCE)}{Offensive Security, 48 hour technical exam}{Spring 2020}{}
+
+
+\cvsection{Project: Relatrace}
+
+\cvachievement{\faHardHat}{From 2018-2020 worked closely alongside an Iowa public safety agency} {to develop training, equipment, and policy management cloud software (Software as a Service, or SaaS)}
+
+\divider
+
+\cvachievement{\faHeartbeat}{Created Relatrace, LLC}{ and began marketing the software to agencies across the world}
+
+\divider
+
+\cvachievement{\faLaptopCode}{Support the software in my free time}{ to include developing new features and ensuring application uptime, security, and availability, while reducing my workload by automating deployment and maintenance tasks}
+
+\divider
+
+
+\cvsection{General Skills}
+
+\cvtag{Linux/UNIX server administration}\\
+\cvtag{Virtualization and cloud} \cvtag {VMWare ESXI}\\
+\cvtag {AWS} \cvtag{Digital Ocean} \cvtag{Azure} \cvtag{Citrix}\\
+\cvtag{Cobalt Strike and red team infrastructure}\\
+\cvtag{Packet capture and analysis}\\
+\cvtag{Port/service scanning with Nmap}\\
+\cvtag{802.11 and GSM wireless security}\\
+
+
+\cvsection{Programming proficiency}
+
+\cvskill{Python (incl. Django)}{5}
+% \divider
+
+\cvskill{C/C++ applications}{4}
+
+\cvskill{C\#, .NET, and Powershell}{4}
+
+\cvskill{React and Javascript}{3}
+
+\cvskill{PHP}{2}
+
+
+%\newpage
+
+\divider
+
+\end{paracol}
+
+
+\cvsection{Accomplishments}
+
+\cvevent{Speaker, vehicle (CAN) hacking}{BSIDES Iowa}{Spring 2019}{Des Moines, IA}
+
+\cvevent{3rd place nationally}{Dept. of Energy Cyber Defense Competition}{Spring 2018}{Argonne National Laboratory, Chicago, IL}
+
+\cvevent{1st Place, CTF winner}{US Cyber Challenge}{Summer 2018}{Washington, DC}
+
+\cvevent{Finalist}{National Cyber Analyst Challenge}{Spring 2018}{Philadelphia, PA}
+
+\cvevent{President and cabinet}{Information Assurance Student Group}{2016 - 2019}{Ames, IA}
+
+\cvevent{Team captain}{ISEAGE Cyber Defense Competitions (CDC)}{2015 - 2017}{Ames, IA}
 \begin{itemize}
 	\item Awarded 1st place in the Spring ‘16 and Fall ‘16 CDCs, 3rd place in ‘17 Nationals CDC
 \end{itemize}
 
-\section{SKILLS}
-\begin{itemize}
-	\item \textbf{Experienced with:} Python, C\#/.NET, Javascript, C/C++/WinAPI, PHP, VBA macro development, Linux/Unix server administration, virtualization and cloud (ESXI/vSphere, AWS, Digital Ocean, Azure), web development (React, Django, SQL, jQuery, AJAX, RESTful APIs)
-	\item \textbf{Security-related:} Cobalt Strike and red team infrastructure, Burp Suite and web security, Packet capture and analysis, port/service scanning with Nmap, Aircrack-ng and 802.11 wireless security
-\end{itemize}
+\divider
 
-\end{resume}
+Updated: July 2020
+
 \end{document}
